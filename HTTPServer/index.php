@@ -24,7 +24,7 @@
           echo "<p>Database \"{$database}\" has the following tables:</p>";
           echo "<ul>";
             foreach ($tables as $table) {
-              echo "<li>{$table}</li>";
+              echo "<li>{$table[0]}</li>";
             }
           echo "</ul>";
         }
