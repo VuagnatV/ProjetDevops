@@ -14,7 +14,7 @@
  
        $conn = mysqli_connect($host, $user, $password, $database);
 
-       $req = "SELECT customerName FROM customers";
+       $req = "SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE='BASE TABLE'";
        $res = $conn->query($req);
        $tables = mysqli_fetch_array($res);
 
