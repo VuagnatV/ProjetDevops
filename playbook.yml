@@ -75,7 +75,8 @@
       name: test
       image: test
       volumes:
-        - volume_test:/usr/share/nginx/html
+        #- volume_test:/usr/share/nginx/html
+        - volume_test:/var/www/html
       ports: 80:8080
     
   
