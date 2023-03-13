@@ -72,7 +72,7 @@
       image: httpserv
       volumes:
         - volume_httpserv:/var/www/html
-      ports: 80:8080
+      ports: 5213:8080
       networks:
         - name: DevopsNet
     
