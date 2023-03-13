@@ -42,14 +42,14 @@
     docker_image:
       build: 
         path: ./mySQLDatabase
-      name: testData
+      name: testdata
       source: build
       force_source: true
 
   - name: run test 2 container
     docker_container:
-      name: testData
-      image: testData
+      name: testdata
+      image: testdata
       ports: 8080:3306
       
   - name: copy dockerfile
