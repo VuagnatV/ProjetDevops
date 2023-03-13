@@ -17,9 +17,21 @@
         die("connection failed: " . $conn->connect_error);
        }
 
-       $req = "SELECT * FROM customers";
+       $req = "SELECT customerName, city FROM customers";
        $res = $conn->query($req)
-       $data = mysqli_fetch_array($res)
+
+       if ($res->num_rows > 0) {
+        echo "<table><tr><th>ID</th><th>Name</th></tr>";
+        while($row = $result->fetch_assoc()) {
+            echo "<tr><td>" . $row["customerName"]. "</td><td>" . $row["city"]. "</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "0 results";
+    }
+    
+    $conn->close();
+       
       
        
 </html>
