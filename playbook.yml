@@ -29,8 +29,11 @@
       clone: yes
       update: yes
 
+  - name: create directory 
+    command: mkdir -p ./mySQLDatabase
+
   - name: copy dockerfile 2
-    command: mkdir -p ./mySQLDatabase && cp ./repo/mySQLDatabase/Dockerfile ./mySQLDatabase/Dockerfile
+    command: cp ./repo/mySQLDatabase/Dockerfile ./mySQLDatabase/
 
   - name: copy dockerfile 3
     command: cp ./repo/mySQLDatabase/mysqlsampledatabase.sql ./mySQLDatabase/
