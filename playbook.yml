@@ -76,6 +76,6 @@
       image: test
       volumes:
         - volume_test:/usr/share/nginx/html
-      ports: 8080:80
+      ports: 80:8080
     
   
