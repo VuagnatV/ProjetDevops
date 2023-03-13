@@ -43,11 +43,11 @@
       image: mysqlserv
       ports: 8000:3306
        
-  - name: build httpserver image
+  - name: build httpserv image
     docker_image:
       build: 
-        path: ./HTTPServer/
-      name: httpserver
+        path: ./repo/HTTPServer/
+      name: httpserv
       source: build
       force_source: true
       
