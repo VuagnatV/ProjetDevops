@@ -11,15 +11,11 @@
        $user = "root";  
        $password = "vincent";  
        $host = "192.168.80.122:8000";  
-
-       //$connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);  
+ 
        $conn = mysqli_connect($host, $user, $password, $database);
 
-       #$query = $connection->query("SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE='BASE TABLE'");  
-       #$tables = $query->fetchAll(PDO::FETCH_COLUMN);  
-
        $req = "SELECT customerName FROM customers";
-       $res = "$conn->query($req)";
+       $res = $conn->query($req);
        $tables = mysqli_fetch_array($res);
 
         if (empty($tables)) {
