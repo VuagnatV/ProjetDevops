@@ -5,7 +5,7 @@
 
      <body>  
       <h1>Hello World!</h1>  
-      <p><?php echo 'We are running PHP, version: ' . phpversion(); ?></p>  
+       
       <?php
        $database ="classicmodels";  
        $user = "root";  
@@ -19,9 +19,9 @@
        $tables = mysqli_fetch_all($res);
 
         if (empty($tables)) {
-          echo "<p>There are no tables in database \"{$database}\".</p>";
+          echo "<p>no data in \"{$database}\".</p>";
         } else {
-          echo "<p>Database \"{$database}\" has the following tables:</p>";
+          echo "<p>Database \"{$database}\" : customerName from customer :</p>";
           echo "<ul>";
             foreach ($tables as $table) {
               echo "<li>{$table[0]}</li>";

@@ -28,55 +28,42 @@
       dest: ./repo/
       clone: yes
       update: yes
-
-  #- name: create directory 
-   # command: mkdir -p ./mySQLDatabase
-
- # - name: copy dockerfile 2
-  #  command: cp ./repo/mySQLDatabase/Dockerfile ./mySQLDatabase/Dockerfile
-
-# - name: copy dockerfile 3
- #   command: cp ./repo/mySQLDatabase/mysqlsampledatabase.sql ./mySQLDatabase/
        
-  - name: build image 2
+  - name: build mysql image
     docker_image:
       build: 
         path: ./repo/mySQLDatabase
-      name: testdata
+      name: mysqlserv
       source: build
       force_source: true
 
-  - name: run test 2 container
+  - name: run mysqlserv container
     docker_container:
-      name: testdata
-      image: testdata
+      name: mysqlserv
+      image: mysqlserv
       ports: 8000:3306
-      
-  - name: copy dockerfile
-    command: cp ./repo/Dockerfile ./Dockerfile
        
-  - name: build image
+  - name: build httpserver image
     docker_image:
       build: 
-        path: ./
-      name: test
+        path: ./HTTPServer/
+      name: httpserver
       source: build
       force_source: true
       
   - name: create volume
     docker_volume:
-      name: volume_test
+      name: volume_httpserv
     
   - name: copy html
-    command: cp ./repo/HTTPServer/index.php /var/lib/docker/volumes/volume_test/_data/
+    command: cp ./repo/HTTPServer/index.php /var/lib/docker/volumes/volume_httpserv/_data/
       
-  - name: run test container
+  - name: run httpserv container
     docker_container:
-      name: test
-      image: test
+      name: httpserv
+      image: httpserv
       volumes:
-        #- volume_test:/usr/share/nginx/html
-        - volume_test:/var/www/html
+        - volume_httpserv:/var/www/html
       ports: 80:8080
     
   
