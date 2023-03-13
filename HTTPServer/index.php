@@ -16,14 +16,7 @@
 
        $req = "SELECT * FROM customers";
        $res = $conn->query($req)
-
-       while($rows=$res->fetch_assoc()) {
-      ?>
-    <table>
-    <tr>
-        <td> <?php echo $rows['customerName']; ?> </td>
-    </tr>
-    <?php } ?>
-       </table>
-    </body>
+       $data = mysqli_fetch_array($res)
+       echo $data['customerName']
+       
 </html>
