@@ -13,25 +13,21 @@
        $host = "192.168.80.122:8000";  
  
        $conn = mysqli_connect($host, $user, $password, $database);
-       if($conn->connect_error){
-        die("connection failed: " . $conn->connect_error);
-       }
 
-       $req = "SELECT customerName, city FROM customers";
-       $res = $conn->query($req)
+       $req = "SELECT customerName FROM customers";
+       $res = $conn->query($req);
+       $tables = mysqli_fetch_array($res);
 
-       if ($res->num_rows > 0) {
-        echo "<table><tr><th>ID</th><th>Name</th></tr>";
-        while($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row["customerName"]. "</td><td>" . $row["city"]. "</td></tr>";
+        if (empty($tables)) {
+          echo "<p>There are no tables in database \"{$database}\".</p>";
+        } else {
+          echo "<p>Database \"{$database}\" has the following tables:</p>";
+          echo "<ul>";
+            foreach ($tables as $table) {
+              echo "<li>{$table}</li>";
+            }
+          echo "</ul>";
         }
-        echo "</table>";
-    } else {
-        echo "0 results";
-    }
-    
-    $conn->close();
-       
-      
-       
+        ?>
+    </body>
 </html>
