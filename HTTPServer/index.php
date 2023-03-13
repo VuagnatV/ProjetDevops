@@ -16,12 +16,18 @@
 
        $req = "SELECT * FROM customers";
        $res = $conn->query($req);
+       $tables = $res->fetch_array(MYSQLI_ASSOC)
       
-        if(mysqli_num_row($result) > 0) {
-            while($data = $result->fetch_assoc()) { 
-               echo $data['customerName'];
-            } 
-        }
-        ?>
+       if (empty($tables)) {
+        echo "<p>There are no tables in database \"{$database}\".</p>";
+      } else {
+        echo "<p>Database \"{$database}\" has the following tables:</p>";
+        echo "<ul>";
+          foreach ($tables as $table) {
+            echo "<li>{$table}</li>";
+          }
+        echo "</ul>";
+      }
+      ?>
     </body>
 </html>
