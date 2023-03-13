@@ -67,8 +67,8 @@
     docker_volume:
       name: volume_test
     
-  - name: copy html
-    command: cp ./repo/index.html /var/lib/docker/volumes/volume_test/_data/
+  #- name: copy html
+   # command: cp ./repo/index.html /var/lib/docker/volumes/volume_test/_data/
       
   - name: run test container
     docker_container:
