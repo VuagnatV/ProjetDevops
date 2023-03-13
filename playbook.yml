@@ -30,7 +30,7 @@
       update: yes
 
   - name: copy dockerfile 2
-    command: cp ./repo/mySQLDatabase/Dockerfile ./mySQLDatabase/Dockerfile
+    command: mkdir -p ./mySQLDatabase && cp ./repo/mySQLDatabase/Dockerfile ./mySQLDatabase/Dockerfile
 
   - name: copy dockerfile 3
     command: cp ./repo/mySQLDatabase/mysqlsampledatabase.sql ./mySQLDatabase/
