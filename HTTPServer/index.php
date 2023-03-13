@@ -15,6 +15,7 @@
        $conn = mysqli_connect($host, $user, $password, $database);
 
        $req = "SELECT * FROM customers";
+       $res = $conn->query($req)
        
       ?>
     </body>
