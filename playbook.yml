@@ -74,6 +74,6 @@
         - volume_httpserv:/var/www/html
       ports: 80:8080
       networks:
-        name: DevopsNet
+        - name: DevopsNet
     
   
