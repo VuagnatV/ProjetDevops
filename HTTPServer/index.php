@@ -21,6 +21,7 @@
         if (empty($tables)) {
           echo "<p>There are no tables in database \"{$database}\".</p>";
         } else {
+            echo("<script>console.log('PHP: " . $tables . "');</script>");
           echo "<p>Database \"{$database}\" has the following tables:</p>";
           echo "<ul>";
             foreach ($tables as $table) {
