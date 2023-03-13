@@ -14,7 +14,7 @@
  
        $conn = mysqli_connect($host, $user, $password, $database);
 
-       $req = "SELECT * FROM customers";
+       $req = "SELECT customerName FROM customers";
        $res = $conn->query($req);
        $tables = mysqli_fetch_all($res);
 
