@@ -46,9 +46,8 @@
       name: mysqlserv
       image: mysqlserv
       ports: 8000:3306
-      network_mode: DevopsNet
       networks:
-        name: DevopsNet
+        - name: DevopsNet
           aliases:
             - mysql
        
