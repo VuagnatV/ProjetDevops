@@ -17,6 +17,6 @@
        $req = "SELECT * FROM customers";
        $res = $conn->query($req)
        $data = mysqli_fetch_array($res)
-       echo $data['customerName']
+      printf("%s ", $row["customerName"]);
        
 </html>
