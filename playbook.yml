@@ -24,20 +24,24 @@
     pip:
       name: docker
       
-  #- name: clone git
-   # git:
-    #  repo: https://github.com/VuagnatV/Pendu.get
-     # dest: ./repo/
-      #clone: yes
-      #update: yes
+  - name: clone git
+    git:
+      repo: https://github.com/VuagnatV/ProjetDevops.git
+      accept_hostkey: true
+      dest: ./repo/
+      clone: yes
+      update: yes
       
-  - name: git clone
-    command: git clone https://github.com/VuagnatV/Pendu.git
+  #- name: git clone
+   # command: git clone https://github.com/VuagnatV/Pendu.git
     
+  #- name: copy dockerfile
+   # copy:
+    #  src: ./Dockerfile
+     # dest: ./Dockerfile
+     
   - name: copy dockerfile
-    copy:
-      src: ./Dockerfile
-      dest: ./Dockerfile
+    command: cp ./repo/Dockerfile ./Dockerfile
        
   - name: build image
     docker_image:
@@ -51,10 +55,13 @@
     docker_volume:
       name: volume_test
       
+ # - name: copy html
+  #  copy:
+   #   src: ./
+    #  dest: /var/lib/docker/volumes/volume_test/_data/
+    
   - name: copy html
-    copy:
-      src: ./
-      dest: /var/lib/docker/volumes/volume_test/_data/
+    command: cp ./repo/index.html /var/lib/docker/volumes/volume_test/_data/
       
   - name: run test conteiner
     docker_container:
