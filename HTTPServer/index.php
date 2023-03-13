@@ -14,12 +14,12 @@
  
        $conn = mysqli_connect($host, $user, $password, $database);
 
-       $req = "SELECT customerName, city FROM customers";
+       $req = "SELECT * FROM customers";
        $res = $conn->query($req);
       
         if(mysqli_num_row($result) > 0) {
             while($data = $result->fetch_assoc()) { 
-           echo "<tr><td>" . $data["customerName"]. " </td><td>" . $data["city"]. "</td></tr>";
+               echo $data['customerName'];
             } 
         }
         ?>
