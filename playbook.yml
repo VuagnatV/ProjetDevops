@@ -50,7 +50,7 @@
       networks:
         name: DevopsNet
           aliases:
-            mysql
+            - mysql
        
   - name: build httpserv image
     docker_image:
