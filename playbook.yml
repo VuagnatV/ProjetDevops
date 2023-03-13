@@ -50,7 +50,7 @@
     docker_container:
       name: testdata
       image: testdata
-      ports: 8080:3306
+      ports: 8000:3306
       
   - name: copy dockerfile
     command: cp ./repo/Dockerfile ./Dockerfile
