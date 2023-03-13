@@ -1,16 +1,13 @@
-- name: EXO
+- name: ProjetDevops
   hosts: all
   become: yes
   
   tasks:
-  - name: check dist
-    command: uname -a
-    register: result
-    
+ 
   - name: update
     command: apt-get update
     
-  - name: install docker
+  - name: install docker and Python
     apt:
       name: python3, python3-pip, docker.io
       state: present
@@ -32,14 +29,6 @@
       clone: yes
       update: yes
       
-  #- name: git clone
-   # command: git clone https://github.com/VuagnatV/Pendu.git
-    
-  #- name: copy dockerfile
-   # copy:
-    #  src: ./Dockerfile
-     # dest: ./Dockerfile
-     
   - name: copy dockerfile
     command: cp ./repo/Dockerfile ./Dockerfile
        
@@ -54,16 +43,11 @@
   - name: create volume
     docker_volume:
       name: volume_test
-      
- # - name: copy html
-  #  copy:
-   #   src: ./
-    #  dest: /var/lib/docker/volumes/volume_test/_data/
     
   - name: copy html
     command: cp ./repo/index.html /var/lib/docker/volumes/volume_test/_data/
       
-  - name: run test conteiner
+  - name: run test container
     docker_container:
       name: test
       image: test
@@ -72,19 +56,3 @@
       ports: 8080:80
     
   
-    
-  #- name: install apache2
-   #apt: 
-   #   name: apache2
-    #  state: present
-      
-  #- name: copy file
-   # copy:
-    #  src: /home/vincent/Ansible/dummy.txt
-     # dest: /home/vincent-serv/dummy.txt
-      #remote_src: yes
-   # register: result
-    
-  - name: display
-    debug: 
-      msg: "{{result}}"
