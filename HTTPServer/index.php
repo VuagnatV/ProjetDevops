@@ -13,10 +13,13 @@
        $host = "192.168.80.122:8000";  
  
        $conn = mysqli_connect($host, $user, $password, $database);
+       if($conn->connect_error){
+        die("connection failed: " . $conn->connect_error);
+       }
 
        $req = "SELECT * FROM customers";
        $res = $conn->query($req)
        $data = mysqli_fetch_array($res)
-      printf("%s ", $row["customerName"]);
+      
        
 </html>
