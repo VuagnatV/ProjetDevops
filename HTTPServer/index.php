@@ -10,7 +10,7 @@
        $database ="classicmodels";  
        $user = "root";  
        $password = "vincent";  
-       $host = "192.168.80.122:8000";  
+       $host = "mysql";  
  
        $conn = mysqli_connect($host, $user, $password, $database);
 

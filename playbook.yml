@@ -20,6 +20,10 @@
   - name: install docker python module
     pip:
       name: docker
+
+  - name: create network
+    docker_network:
+      name: DevopsNet
       
   - name: clone git
     git:
@@ -42,6 +46,11 @@
       name: mysqlserv
       image: mysqlserv
       ports: 8000:3306
+      network_mode: DevopsNet
+      networks:
+        name: DevopsNet
+          aliases:
+            mysql
        
   - name: build httpserv image
     docker_image:
