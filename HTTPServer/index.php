@@ -19,13 +19,8 @@
       
         if(mysqli_num_row($result) > 0) {
             while($data = $result->fetch_assoc()) { 
-            ?>
-                <tr>
-                    <td><?php echo $data['customerName']; ?> </td>
-                    <td><?php echo $data['city']; ?> </td>
-            </tr>
-        <?php>
-            }
+           echo "<tr><td>" . $data["customerName"]. " </td><td>" . $data["city"]. "</td></tr>";
+            } 
         }
         ?>
     </body>
