@@ -14,20 +14,18 @@
  
        $conn = mysqli_connect($host, $user, $password, $database);
 
-       $req = "SELECT customerName FROM customers";
+       $req = "SELECT customerName, city FROM customers";
        $res = $conn->query($req);
-       $tables = mysqli_fetch_array($res);
-
-        if (empty($tables)) {
-          echo "<p>There are no tables in database \"{$database}\".</p>";
-        } else {
-            echo("<script>console.log('PHP: " . $tables . "');</script>");
-          echo "<p>Database \"{$database}\" has the following tables:</p>";
-          echo "<ul>";
-            foreach ($tables as $table) {
-              echo "<li>{$table}</li>";
+      
+        if(mysqli_num_row($result) > 0) {
+            while($data = $result->fetch_assoc()) { 
+            ?>
+                <tr>
+                    <td><?php echo $data['customerName']; ?> </td>
+                    <td><?php echo $data['city']; ?> </td>
+            </tr>
+        <?php>
             }
-          echo "</ul>";
         }
         ?>
     </body>
