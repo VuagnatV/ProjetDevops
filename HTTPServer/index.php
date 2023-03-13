@@ -16,7 +16,7 @@
 
        $req = "SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE='BASE TABLE'";
        $res = $conn->query($req);
-       $tables = mysqli_fetch_array($res);
+       $tables = mysqli_fetch_all($res);
 
         if (empty($tables)) {
           echo "<p>There are no tables in database \"{$database}\".</p>";
